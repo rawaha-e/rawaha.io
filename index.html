@@ -1,11 +1,398 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rawaha El Houssayni</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Rawaha El Houssayni — Accessibility &amp; AI enthusiast. Building inclusive digital experiences at the intersection of human cognition and machine intelligence." />
+  <meta name="theme-color" content="#3d5af1" />
+  <title>Rawaha El Houssayni — Accessibility &amp; AI Enthusiast</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h1>Rawaha El Houssayni</h1>
+
+  <!-- ============================================================
+       Skip link — first focusable element; reveals on focus
+  ============================================================ -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ARIA live region — announces settings changes to screen readers -->
+  <div id="a11y-announcer" role="status" aria-live="polite" aria-atomic="true" class="sr-only"></div>
+
+  <!-- ============================================================
+       Header
+  ============================================================ -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+
+      <a href="#hero" class="site-logo" aria-label="Rawaha El Houssayni — go to top of page">Rawaha El Houssayni</a>
+
+      <nav class="main-nav" aria-label="Main navigation">
+        <ul role="list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button
+        id="settings-btn"
+        class="settings-btn"
+        type="button"
+        aria-controls="settings-dialog"
+        aria-expanded="false"
+        aria-haspopup="dialog"
+      >
+        <!-- Lucide: settings -->
+        <svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+        <span>Accessibility</span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       Main content
+  ============================================================ -->
+  <main id="main-content" tabindex="-1">
+
+    <!-- ---- Hero ---- -->
+    <section id="hero" class="section section--hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-layout">
+
+          <div class="hero-content">
+            <p class="hero-eyebrow" aria-hidden="true">Hi, I'm</p>
+            <h1 id="hero-title">
+              <span class="sr-only">Hi, I'm </span>Rawaha El Houssayni
+            </h1>
+            <p class="hero-tagline">
+              Software engineer passionate about AI &amp; Accessibility: 
+              I build intelligent and inclusive digital experiences and explore the intersection
+              of human cognition and machine intelligence.
+            </p>
+            <div class="hero-cta">
+              <a href="#projects" class="btn btn--primary">See my work</a>
+              <a href="#contact" class="btn btn--outline">Get in touch</a>
+            </div>
+          </div>
+
+          <div class="hero-portrait" aria-hidden="true">
+            <img
+              src="https://placehold.co/360x360/3d5af1/ffffff?text=Rawaha"
+              alt="Portrait of Rawaha El Houssayni"
+              aria-hidden="false"
+              width="360"
+              height="360"
+              class="portrait-img"
+            />
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- About ---- -->
+    <section id="about" class="section section--alt" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title" class="section-title">About me</h2>
+        <div class="about-grid">
+
+          <div class="about-text">
+            <p>
+              I'm a software engineer passionate about making technology work
+              for <em>everyone</em>. I believe the best digital products are
+              accessible by design.
+            </p>
+          </div>
+
+          <div class="about-interests">
+            <h3 class="subsection-title">What I care about</h3>
+            <ul class="interest-list" role="list">
+              <li>
+                <!-- Lucide: accessibility -->
+                <svg class="interest-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="16" cy="4" r="1"/>
+                  <path d="m18 19 1-7-6 1"/>
+                  <path d="m5 8 3-3 5.5 3-2.36 3.5"/>
+                  <path d="M4.24 14.5a5 5 0 0 0 6.88 6"/>
+                  <path d="M13.76 17.5a5 5 0 0 0-6.88-6"/>
+                </svg>
+                Web Accessibility (WCAG, ARIA, AT)
+              </li>
+              <li>
+                <!-- Lucide: cpu -->
+                <svg class="interest-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="7" y="7" width="10" height="10" rx="1"/>
+                  <path d="M9 7V4M12 7V4M15 7V4M9 20v-3M12 20v-3M15 20v-3M4 9h3M4 12h3M4 15h3M17 9h3M17 12h3M17 15h3"/>
+                </svg>
+                AI &amp; Machine Learning
+              </li>
+              <li>
+                <!-- Lucide: monitor -->
+                <svg class="interest-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="20" height="14" x="2" y="3" rx="2"/>
+                  <path d="M8 21h8"/>
+                  <path d="M12 17v4"/>
+                </svg>
+                Human–Computer Interaction
+              </li>
+              <li>
+                <!-- Lucide: search -->
+                <svg class="interest-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/>
+                  <path d="m21 21-4.3-4.3"/>
+                </svg>
+                Inclusive Design Research
+              </li>
+              <li>
+                <!-- Lucide: terminal -->
+                <svg class="interest-icon" aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="4 17 10 11 4 5"/>
+                  <line x1="12" y1="19" x2="20" y2="19"/>
+                </svg>
+                Keyboard-first UX
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- Projects ---- -->
+    <section id="projects" class="section" aria-labelledby="projects-title">
+      <div class="container">
+        <h2 id="projects-title" class="section-title">Projects</h2>
+        <ul class="projects-grid" role="list">
+
+          <li class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <a href="https://github.com/rawaha-e/a11y-vision" class="card-link" aria-describedby="p1-desc" target="_blank" rel="noopener noreferrer">A11y Vision</a>
+              </h3>
+            </div>
+            <p id="p1-desc" class="card-desc">
+              A proof of concept for a multimodal approach to generate accessible
+              webpages for use with screen readers when accessibility markers are
+              not present.
+            </p>
+            <div class="card-footer">
+              <ul class="card-tags" role="list" aria-label="Technologies used">
+                <li>AI</li>
+                <li>Computer Vision</li>
+                <li>A11y</li>
+              </ul>
+              <a href="https://github.com/rawaha-e/a11y-vision" class="card-gh-link" target="_blank" rel="noopener noreferrer" aria-label="View A11y Vision on GitHub (opens in new tab)">
+                <!-- Lucide: github -->
+                <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                  <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+                GitHub<span class="sr-only"> (opens in new tab)</span>
+              </a>
+            </div>
+          </li>
+
+          <li class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <a href="https://github.com/rawaha-e/llm-round-table" class="card-link" aria-describedby="p2-desc" target="_blank" rel="noopener noreferrer">LLM Round Table</a>
+              </h3>
+            </div>
+            <p id="p2-desc" class="card-desc">
+              A basic program to let LLMs debate a subject given by the user.
+            </p>
+            <div class="card-footer">
+              <ul class="card-tags" role="list" aria-label="Technologies used">
+                <li>LLM</li>
+                <li>Multi-agent</li>
+                <li>Python</li>
+              </ul>
+              <a href="https://github.com/rawaha-e/llm-round-table" class="card-gh-link" target="_blank" rel="noopener noreferrer" aria-label="View LLM Round Table on GitHub (opens in new tab)">
+                <!-- Lucide: github -->
+                <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                  <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+                GitHub<span class="sr-only"> (opens in new tab)</span>
+              </a>
+            </div>
+          </li>
+
+          <li class="card">
+            <div class="card-header">
+              <h3 class="card-title">
+                <a href="https://play.google.com/store/apps/details?id=ca.moeb.audionav" class="card-link" aria-describedby="p3-desc" target="_blank" rel="noopener noreferrer">Accessible Audioguide</a>
+              </h3>
+            </div>
+            <p id="p3-desc" class="card-desc">
+              An accessible mobile audioguide for museum and cultural visits.
+            </p>
+            <div class="card-footer">
+              <ul class="card-tags" role="list" aria-label="Technologies used">
+                <li>Android</li>
+                <li>AI</li>
+                <li>A11y</li>
+              </ul>
+              <a href="https://play.google.com/store/apps/details?id=ca.moeb.audionav" class="card-gh-link" target="_blank" rel="noopener noreferrer" aria-label="View Accessible Audioguide on Google Play (opens in new tab)">
+                <!-- Lucide: smartphone -->
+                <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/>
+                  <path d="M12 18h.01"/>
+                </svg>
+                Play Store<span class="sr-only"> (opens in new tab)</span>
+              </a>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+    <!-- ---- Contact ---- -->
+    <section id="contact" class="section section--alt" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" class="section-title">Get in touch</h2>
+        <p class="contact-intro">
+          I'm always up for a conversation about accessibility, AI, or anything
+          in between. Reach out via any channel below.
+        </p>
+        <ul class="contact-list" role="list">
+
+          <li>
+            <a class="contact-link" href="mailto:hello@rawaha.io">
+              <!-- Lucide: mail -->
+              <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+              hello@rawaha.io
+            </a>
+          </li>
+
+          <li>
+            <a class="contact-link" href="https://github.com/rawaha-e" target="_blank" rel="noopener noreferrer">
+              <!-- Lucide: github -->
+              <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                <path d="M9 18c-4.51 2-5-2-7-2"/>
+              </svg>
+              GitHub
+              <span class="sr-only">(opens in new tab)</span>
+            </a>
+          </li>
+
+          <li>
+            <a class="contact-link" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+              <!-- Lucide: linkedin -->
+              <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect width="4" height="12" x="2" y="9"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+              LinkedIn
+              <span class="sr-only">(opens in new tab)</span>
+            </a>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================================
+       Footer
+  ============================================================ -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p>
+        <span aria-hidden="true">©</span><span class="sr-only">Copyright</span>
+        2026 Rawaha El Houssayni.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       Accessibility settings dialog
+       Native <dialog> gives: top-layer stacking, Escape to close,
+       ::backdrop, and inert-ification of background content.
+  ============================================================ -->
+  <dialog
+    id="settings-dialog"
+    class="settings-dialog"
+    aria-labelledby="dialog-title"
+    aria-describedby="dialog-desc"
+  >
+    <div class="dialog-inner">
+
+      <div class="dialog-header">
+        <h2 id="dialog-title" class="dialog-title">Accessibility settings</h2>
+        <button
+          id="settings-close"
+          class="btn-icon"
+          type="button"
+          aria-label="Close accessibility settings"
+        >
+          <!-- Lucide: x -->
+          <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18"/>
+            <path d="m6 6 12 12"/>
+          </svg>
+        </button>
+      </div>
+
+      <p id="dialog-desc" class="dialog-desc">
+        Adjust how this site looks and behaves. Your preferences are saved and
+        restored on your next visit.
+      </p>
+
+      <!-- Colour theme -->
+      <fieldset class="settings-group">
+        <legend class="settings-label">Colour theme</legend>
+        <div class="radio-group">
+          <label class="option-row">
+            <input type="radio" name="theme" value="auto" />
+            <span>Auto <span class="hint">(follows your device)</span></span>
+          </label>
+          <label class="option-row">
+            <input type="radio" name="theme" value="light" />
+            <span>Light</span>
+          </label>
+          <label class="option-row">
+            <input type="radio" name="theme" value="dark" />
+            <span>Dark</span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- Display preferences -->
+      <fieldset class="settings-group">
+        <legend class="settings-label">Display preferences</legend>
+        <label class="option-row">
+          <input type="checkbox" id="pref-high-contrast" />
+          <span>High contrast</span>
+        </label>
+        <label class="option-row">
+          <input type="checkbox" id="pref-reduced-motion" />
+          <span>Reduce motion</span>
+        </label>
+        <label class="option-row">
+          <input type="checkbox" id="pref-dyslexia" />
+          <span>Dyslexia-friendly font <span class="hint">(OpenDyslexic)</span></span>
+        </label>
+      </fieldset>
+
+      <button id="btn-reset" class="btn btn--ghost btn--sm" type="button">
+        Reset to defaults
+      </button>
+
+    </div>
+  </dialog>
+
+  <script src="main.js"></script>
 </body>
 </html>
