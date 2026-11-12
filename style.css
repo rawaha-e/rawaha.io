@@ -592,143 +592,101 @@ body.dyslexia-font {
 }
 
 /* ============================================================
-   Projects grid
+   Projects list
 ============================================================ */
-.projects-grid {
+.project-list {
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
-  gap: 1.5rem;
+  border-top: 1px solid var(--color-border);
 }
 
-.card {
-  background: var(--color-bg-card);
-  border: 1px solid var(--color-border);
-  border-radius: 1rem;
-  padding: 1.75rem;
+.project {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem 2rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+@media (min-width: 48rem) {
+  .project {
+    grid-template-columns: minmax(0, 1fr) 15rem;
+    align-items: start;
+  }
+}
+
+.project-main {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  box-shadow: var(--shadow-card);
-  transition:
-    box-shadow var(--transition-med),
-    border-color var(--transition-fast),
-    transform var(--transition-med);
+  gap: 0.4rem;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .card { transition: none; }
-}
+.project-title { font-size: 1.15rem; font-weight: 700; }
 
-.card:hover {
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--color-accent);
-  transform: translateY(-3px);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .card:hover { transform: none; }
-}
-
-.card-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 0.75rem;
-}
-
-.badge-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.3rem;
-  flex-shrink: 0;
-}
-
-.card-title { font-size: 1.1rem; font-weight: 700; }
-
-.card-link {
-  color: var(--color-text);
-  text-decoration: none;
-}
-
-.card-link:hover {
-  color: var(--color-accent);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-/* Badges */
-.badge {
+.project-link {
   display: inline-flex;
   align-items: center;
-  padding: 0.2em 0.65em;
-  border-radius: 999px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  gap: 0.4rem;
+  color: var(--color-text);
+  text-decoration: underline;
+  text-decoration-color: var(--color-border);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+  transition: color var(--transition-fast), text-decoration-color var(--transition-fast);
+}
+
+.project-link:hover {
+  color: var(--color-accent);
+  text-decoration-color: currentColor;
+}
+
+.project-ext {
   flex-shrink: 0;
+  color: var(--color-text-subtle);
 }
 
-.badge--ai {
-  background: var(--color-badge-ai-bg);
-  color: var(--color-badge-ai-text);
-}
+.project-link:hover .project-ext { color: currentColor; }
 
-.badge--a11y {
-  background: var(--color-badge-a11y-bg);
-  color: var(--color-badge-a11y-text);
-}
-
-.card-desc {
-  font-size: 0.925rem;
+.project-desc {
+  font-size: 0.95rem;
   color: var(--color-text-subtle);
   line-height: 1.65;
-  flex: 1;
+  max-width: 65ch;
 }
 
-.card-tags {
+.project-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (min-width: 48rem) {
+  .project-meta { align-items: flex-end; text-align: right; }
+}
+
+.project-source {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-subtle);
+}
+
+.project-tags {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
   gap: 0.4rem;
 }
 
-.card-tags li {
+@media (min-width: 48rem) {
+  .project-tags { justify-content: flex-end; }
+}
+
+.project-tags li {
   font-size: 0.78rem;
   font-weight: 600;
   background: var(--color-accent-subtle);
   color: var(--color-accent);
   padding: 0.2em 0.6em;
   border-radius: 0.35rem;
-}
-
-.card-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.75rem;
-  margin-top: auto;
-}
-
-.card-gh-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--color-text-subtle);
-  text-decoration: none;
-  border: 1.5px solid var(--color-border);
-  border-radius: 0.4rem;
-  padding: 0.25em 0.65em;
-  white-space: nowrap;
-  transition: color var(--transition-fast), border-color var(--transition-fast);
-}
-
-.card-gh-link:hover {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
 }
 
 /* ============================================================
