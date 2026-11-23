@@ -409,13 +409,14 @@ body.dyslexia-font {
 ============================================================ */
 .hero-layout {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: clamp(1.5rem, 4vw, 2.5rem);
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(2rem, 6vw, 5rem);
+  flex-wrap: wrap;
 }
 
 .hero-content {
-  width: 100%;
+  flex: 1 1 340px;
 }
 
 .hero-portrait {
@@ -435,8 +436,9 @@ body.dyslexia-font {
   display: block;
 }
 
-/* Smaller portrait on very small screens */
+/* Stack portrait below text on very small screens */
 @media (max-width: 620px) {
+  .hero-layout { flex-direction: column-reverse; align-items: flex-start; }
   .portrait-img { width: 130px; height: 130px; }
 }
 
