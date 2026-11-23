@@ -569,9 +569,6 @@ body.dyslexia-font {
   color: var(--color-text);
 }
 
-/* Interests span the full width so the horizontal list has room */
-.about-interests { grid-column: 1 / -1; }
-
 .interest-list {
   list-style: none;
   display: flex;
