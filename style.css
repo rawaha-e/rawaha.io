@@ -415,7 +415,7 @@ body.dyslexia-font {
 }
 
 .hero-content {
-  max-width: 620px;
+  width: 100%;
 }
 
 .hero-portrait {
@@ -459,7 +459,6 @@ body.dyslexia-font {
 .hero-tagline {
   font-size: clamp(1.05rem, 1.5vw + 0.6rem, 1.25rem);
   color: var(--color-text-subtle);
-  max-width: 55ch;
   margin-bottom: 2.5rem;
   line-height: 1.7;
 }
