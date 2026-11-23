@@ -293,6 +293,45 @@
   }
 
   /* ----------------------------------------------------------
+     Project "What is this?" dialogs
+     Native <dialog showModal()> handles Escape, inerts the page
+     and traps focus; we return focus to the button on close.
+  ---------------------------------------------------------- */
+  Array.prototype.forEach.call(
+    document.querySelectorAll("[data-info-dialog]"),
+    function (btn) {
+      var dialog = document.getElementById(btn.getAttribute("data-info-dialog"));
+      if (!dialog) return;
+
+      btn.addEventListener("click", function () {
+        dialog.showModal();
+        btn.setAttribute("aria-expanded", "true");
+        var closeBtn = dialog.querySelector(".info-close");
+        if (closeBtn) closeBtn.focus();
+      });
+
+      dialog.querySelector(".info-close").addEventListener("click", function () {
+        dialog.close();
+      });
+
+      /* Close on backdrop click */
+      dialog.addEventListener("click", function (e) {
+        if (e.target !== dialog) return;
+        var r = dialog.getBoundingClientRect();
+        if (e.clientX < r.left || e.clientX > r.right ||
+            e.clientY < r.top  || e.clientY > r.bottom) {
+          dialog.close();
+        }
+      });
+
+      dialog.addEventListener("close", function () {
+        btn.setAttribute("aria-expanded", "false");
+        btn.focus();
+      });
+    }
+  );
+
+  /* ----------------------------------------------------------
      Initialise — restore saved preferences on every page load
   ---------------------------------------------------------- */
   var prefs = loadPrefs();
