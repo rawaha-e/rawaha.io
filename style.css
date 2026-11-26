@@ -44,6 +44,8 @@
   --color-badge-a11y-bg:  #e6f4ea;
   --color-badge-a11y-text:#1a6630;   /* 5.2:1 on #e6f4ea */
 
+  --color-error:          #b3261e;   /* 6.0:1 on #f4f4f8 */
+
   --shadow-card:       0 2px 8px rgba(0,0,0,.07);
   --shadow-card-hover: 0 6px 20px rgba(0,0,0,.13);
   --shadow-dialog:     0 8px 40px rgba(0,0,0,.18);
@@ -73,6 +75,8 @@
   --color-badge-a11y-bg:  #0a2810;
   --color-badge-a11y-text:#7ddb93;  /* 6.8:1 on #0a2810 */
 
+  --color-error:          #ff8a80;  /* 7.9:1 on #141428 */
+
   --shadow-card:       0 2px 8px rgba(0,0,0,.4);
   --shadow-card-hover: 0 6px 20px rgba(0,0,0,.6);
   --shadow-dialog:     0 8px 40px rgba(0,0,0,.7);
@@ -98,6 +102,8 @@
   --color-badge-ai-text:  #ff9900;  /* 8.3:1 on black */
   --color-badge-a11y-bg:  #000000;
   --color-badge-a11y-text:#00ff66;  /* 12.6:1 on black */
+
+  --color-error:          #ff8080;  /* 8.6:1 on black */
 
   --shadow-card:       none;
   --shadow-card-hover: none;
@@ -127,6 +133,8 @@
     --color-badge-a11y-bg:  #0a2810;
     --color-badge-a11y-text:#7ddb93;
 
+    --color-error:          #ff8a80;
+
     --shadow-card:       0 2px 8px rgba(0,0,0,.4);
     --shadow-card-hover: 0 6px 20px rgba(0,0,0,.6);
     --shadow-dialog:     0 8px 40px rgba(0,0,0,.7);
@@ -151,6 +159,7 @@
     --color-badge-ai-text:  #ff9900;
     --color-badge-a11y-bg:  #000000;
     --color-badge-a11y-text:#00ff66;
+    --color-error:          #ff8080;
     --shadow-card:       none;
     --shadow-card-hover: none;
     --shadow-dialog:     none;
@@ -762,6 +771,70 @@ body.dyslexia-font {
 }
 
 .contact-link:hover { color: var(--color-accent-hover); }
+
+/* ---- Contact form ---- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
+  max-width: 36rem;
+  margin-bottom: 2.5rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.form-field label {
+  font-weight: 600;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  font: inherit;
+  color: var(--color-text);
+  background: var(--color-bg);
+  /* text-subtle, not border: input edges need 3:1 (WCAG 1.4.11) */
+  border: 2px solid var(--color-text-subtle);
+  border-radius: 0.5rem;
+  /* Keep field + its label clear of the sticky header when focused
+     (WCAG 2.4.11 Focus Not Obscured) */
+  scroll-margin-top: 7rem;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 8rem;
+}
+
+.form-field [aria-invalid="true"] {
+  border-color: var(--color-error);
+}
+
+.form-error {
+  color: var(--color-error);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.form-status:empty { display: none; }
+
+.form-status {
+  font-weight: 600;
+}
+
+.form-status[data-state="error"] { color: var(--color-error); }
+
+.contact-alt {
+  color: var(--color-text-subtle);
+  margin-bottom: 1rem;
+}
 
 /* ============================================================
    Footer

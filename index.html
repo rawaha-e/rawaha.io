@@ -293,9 +293,41 @@
         <h2 id="contact-title" class="section-title">Get in touch</h2>
         <p class="contact-intro">
           I'm always up for a conversation about accessibility, AI, or anything
-          in between. Reach out via any channel below, even if you're not sure
-          yet what you want.
+          in between. Send me a message below, even if you're not sure yet what
+          you want.
         </p>
+
+        <!-- Design only: not wired to a form provider yet. main.js handles
+             validation and stops the submit. -->
+        <form
+          class="contact-form"
+          name="contact"
+          aria-labelledby="contact-title"
+        >
+          <div class="form-field">
+            <label for="contact-name">Name</label>
+            <input id="contact-name" name="name" type="text" autocomplete="name" required maxlength="100" />
+            <p id="contact-name-error" class="form-error" hidden></p>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-email">Email</label>
+            <input id="contact-email" name="email" type="email" autocomplete="email" required maxlength="254" />
+            <p id="contact-email-error" class="form-error" hidden></p>
+          </div>
+
+          <div class="form-field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" rows="6" required maxlength="5000"></textarea>
+            <p id="contact-message-error" class="form-error" hidden></p>
+          </div>
+
+          <button type="submit" class="btn btn--primary">Send message</button>
+
+          <p id="contact-status" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+
+        <p class="contact-alt">Or find me on:</p>
         <ul class="contact-list" role="list">
 
           <!-- email contact (hidden)
