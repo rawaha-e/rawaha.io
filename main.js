@@ -332,6 +332,87 @@
   );
 
   /* ----------------------------------------------------------
+     Contact form — accessible validation only. Not connected to
+     a form provider yet, so submissions are not sent anywhere.
+  ---------------------------------------------------------- */
+  var contactForm = document.querySelector(".contact-form");
+
+  if (contactForm) {
+    var statusEl  = document.getElementById("contact-status");
+    var fields    = contactForm.querySelectorAll(".form-field input, .form-field textarea");
+
+    // We show our own messages instead of the browser's bubbles
+    contactForm.setAttribute("novalidate", "");
+
+    function fieldError(field) {
+      var label = contactForm.querySelector('label[for="' + field.id + '"]').textContent;
+      if (field.validity.valueMissing || !field.value.trim()) {
+        return "Please enter your " + label.toLowerCase() + ".";
+      }
+      if (field.validity.typeMismatch) {
+        return "Please enter a valid email address, like name@example.com.";
+      }
+      if (field.validity.tooLong) {
+        return label + " is too long.";
+      }
+      return "";
+    }
+
+    function showError(field, msg) {
+      var errEl = document.getElementById(field.id + "-error");
+      if (msg) {
+        errEl.textContent = msg;
+        errEl.hidden = false;
+        field.setAttribute("aria-invalid", "true");
+        field.setAttribute("aria-describedby", errEl.id);
+      } else {
+        errEl.textContent = "";
+        errEl.hidden = true;
+        field.removeAttribute("aria-invalid");
+        field.removeAttribute("aria-describedby");
+      }
+    }
+
+    function setStatus(msg, state) {
+      statusEl.textContent = msg;
+      if (state) statusEl.setAttribute("data-state", state);
+      else statusEl.removeAttribute("data-state");
+    }
+
+    // Once a field has been flagged, re-check it as the user fixes it
+    fields.forEach(function (field) {
+      field.addEventListener("input", function () {
+        if (field.getAttribute("aria-invalid") === "true") {
+          showError(field, fieldError(field));
+        }
+      });
+    });
+
+    contactForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      var firstInvalid = null;
+      fields.forEach(function (field) {
+        var msg = fieldError(field);
+        showError(field, msg);
+        if (msg && !firstInvalid) firstInvalid = field;
+      });
+
+      if (firstInvalid) {
+        setStatus("", null);
+        firstInvalid.focus();
+        return;
+      }
+
+      // No form provider connected yet, so nothing is sent
+      setStatus(
+        "Sorry, the form isn't connected yet. Please reach me on LinkedIn for now.",
+        "error"
+      );
+    });
+  }
+
+  /* ----------------------------------------------------------
      Initialise — restore saved preferences on every page load
   ---------------------------------------------------------- */
   var prefs = loadPrefs();
